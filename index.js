@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+require("dotenv").config();
+console.log("Conectando ao banco:", process.env.SUPABASE_DB_URL);
+
+
 // Verifica se a variável de ambiente está definida
 if (!process.env.SUPABASE_DB_URL) {
   console.error("ERRO: A variável SUPABASE_DB_URL não está definida.");
@@ -15,8 +19,9 @@ if (!process.env.SUPABASE_DB_URL) {
 
 const pool = new Pool({
   connectionString: process.env.SUPABASE_DB_URL,
-  ssl: { rejectUnauthorized: false },
+  ssl: { rejectUnauthorized: false }
 });
+
 
 // Rota para buscar dinossauros
 app.get("/dinosaurs", async (req, res) => {
