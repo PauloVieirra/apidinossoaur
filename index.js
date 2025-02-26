@@ -23,7 +23,7 @@ const pool = new Pool({
 });
 
 
-// Rota para buscar dinossauros
+// Rota para buscar itens (get)
 app.get("/dinosaurs", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM dinosaurs");
@@ -33,6 +33,18 @@ app.get("/dinosaurs", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar dinossauros" });
   }
 });
+
+//Rota para atualizar elementos de um item (patch)
+
+//Rota para editar itens (put)
+
+//Rota para inserir novos itens (pot)
+
+//Rota para deletar um item (delete)
+
+
+
+
 
 // Porta do servidor
 const PORT = process.env.PORT || 3000;
